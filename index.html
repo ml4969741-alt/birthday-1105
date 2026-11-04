@@ -412,7 +412,225 @@
     </div>
   </section>
 
-  <!-- ============ 05 · 终章 ============ -->
+  <!-- ============ 05 · 扭蛋礼物 ============ -->
+  <section class="scene scene--gacha" id="sceneGacha" aria-label="生日扭蛋机">
+    <div class="gacha-bg" aria-hidden="true">
+      <span class="gacha-shape gacha-shape--yellow"></span>
+      <span class="gacha-shape gacha-shape--pink"></span>
+      <span class="gacha-shape gacha-shape--pink2"></span>
+      <span class="gacha-shape gacha-shape--blue"></span>
+    </div>
+
+    <header class="gacha-top">
+      <span class="gacha-date">11.05</span>
+      <button class="music-btn music-btn--round" type="button" data-music aria-label="关闭音乐" aria-pressed="true">
+        <span class="music-wave" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span class="music-text">音乐</span>
+      </button>
+    </header>
+
+    <div class="gacha-wrap">
+      <header class="gacha-head">
+        <p class="eyebrow eyebrow--gacha">BIRTHDAY GACHA · THREE GIFTS</p>
+        <h2 class="gacha-sign">投下一枚硬币，扭出一个礼物</h2>
+        <p class="gacha-sub">九份礼物，随机出现三份 · 每一份都算数</p>
+      </header>
+
+      <div class="gacha-grid">
+        <div class="gacha-stage" id="gachaStage">
+          <svg class="gacha-machine" viewBox="0 0 600 760" role="img" aria-label="一台粉色的生日扭蛋机">
+            <defs>
+              <radialGradient id="gShadow" cx="50%" cy="50%" r="50%">
+                <stop offset="0" stop-color="#7c405b" stop-opacity=".22"/>
+                <stop offset="1" stop-color="#7c405b" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="gBody" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#e94686"/>
+                <stop offset=".14" stop-color="#f45d9c"/>
+                <stop offset=".54" stop-color="#fa7bb2"/>
+                <stop offset=".88" stop-color="#f25999"/>
+                <stop offset="1" stop-color="#d9387a"/>
+              </linearGradient>
+              <linearGradient id="gRim" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#ffd96b"/>
+                <stop offset="1" stop-color="#f0b52c"/>
+              </linearGradient>
+              <linearGradient id="gDial" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#4668cf"/>
+                <stop offset=".5" stop-color="#6d8bea"/>
+                <stop offset="1" stop-color="#3b59bd"/>
+              </linearGradient>
+              <radialGradient id="gGlass" cx="38%" cy="28%" r="75%">
+                <stop offset="0" stop-color="#ffffff" stop-opacity=".72"/>
+                <stop offset=".42" stop-color="#e6f2ff" stop-opacity=".28"/>
+                <stop offset="1" stop-color="#b9d7fb" stop-opacity=".2"/>
+              </radialGradient>
+              <clipPath id="gGlobeClip">
+                <circle cx="300" cy="250" r="171"/>
+              </clipPath>
+            </defs>
+
+            <ellipse cx="300" cy="734" rx="225" ry="24" fill="url(#gShadow)"/>
+
+            <rect x="166" y="690" width="58" height="26" rx="12" fill="#27305c"/>
+            <rect x="376" y="690" width="58" height="26" rx="12" fill="#27305c"/>
+
+            <rect x="120" y="430" width="360" height="276" rx="28" fill="url(#gBody)" stroke="#d43b7c" stroke-width="2"/>
+            <rect x="137" y="447" width="326" height="18" rx="9" fill="#ffffff" opacity=".09"/>
+            <path d="M146 468 C140 520 140 620 154 680" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" opacity=".12"/>
+
+            <circle cx="300" cy="250" r="171" fill="#eef7ff" stroke="#416fc7" stroke-width="7"/>
+
+            <g class="gacha-capsules" clip-path="url(#gGlobeClip)">
+              <g transform="translate(219 167) rotate(-16)">
+                <circle r="29" fill="#f4796f"/><path d="M-29 0 A29 29 0 0 1 29 0 Z" fill="#ffd36a"/><path d="M-29 0H29" stroke="#d05a54" stroke-opacity=".25" stroke-width="2"/><circle r="28.5" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2"/><circle cx="-10" cy="-12" r="4" fill="rgba(255,255,255,.65)"/>
+              </g>
+              <g transform="translate(276 132) rotate(12)">
+                <circle r="30" fill="#f7a5c3"/><path d="M-30 0 A30 30 0 0 1 30 0 Z" fill="#ffe29a"/><path d="M-30 0H30" stroke="#d87b9a" stroke-opacity=".25" stroke-width="2"/><circle r="29.5" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2"/><circle cx="-10" cy="-12" r="4" fill="rgba(255,255,255,.7)"/>
+              </g>
+              <g transform="translate(337 147) rotate(-8)">
+                <circle r="27" fill="#88b6ee"/><path d="M-27 0 A27 27 0 0 1 27 0 Z" fill="#cdb6f5"/><path d="M-27 0H27" stroke="#5f80b8" stroke-opacity=".25" stroke-width="2"/><circle r="26.5" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2"/><circle cx="-9" cy="-11" r="4" fill="rgba(255,255,255,.7)"/>
+              </g>
+              <g transform="translate(391 184) rotate(18)">
+                <circle r="29" fill="#87d2ac"/><path d="M-29 0 A29 29 0 0 1 29 0 Z" fill="#ffd36a"/><path d="M-29 0H29" stroke="#58a582" stroke-opacity=".25" stroke-width="2"/><circle r="28.5" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2"/><circle cx="-10" cy="-12" r="4" fill="rgba(255,255,255,.65)"/>
+              </g>
+              <g transform="translate(184 238) rotate(22)">
+                <circle r="30" fill="#f47fae"/><path d="M-30 0 A30 30 0 0 1 30 0 Z" fill="#ffd9e8"/><path d="M-30 0H30" stroke="#c85b86" stroke-opacity=".25" stroke-width="2"/><circle r="29.5" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2"/><circle cx="-10" cy="-12" r="4" fill="rgba(255,255,255,.65)"/>
+              </g>
+              <g transform="translate(246 224) rotate(-12)">
+                <circle r="32" fill="#7d9fe4"/><path d="M-32 0 A32 32 0 0 1 32 0 Z" fill="#d7c4fa"/><path d="M-32 0H32" stroke="#5d78b5" stroke-opacity=".25" stroke-width="2"/><circle r="31.5" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2"/><circle cx="-11" cy="-13" r="4" fill="rgba(255,255,255,.7)"/>
+              </g>
+              <g transform="translate(307 210) rotate(9)">
+                <circle r="31" fill="#f7b16b"/><path d="M-31 0 A31 31 0 0 1 31 0 Z" fill="#ffe8b4"/><path d="M-31 0H31" stroke="#cf8552" stroke-opacity=".25" stroke-width="2"/><circle r="30.5" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2"/><circle cx="-10" cy="-13" r="4" fill="rgba(255,255,255,.7)"/>
+              </g>
+              <g transform="translate(365 226) rotate(-20)">
+                <circle r="28" fill="#b58de9"/><path d="M-28 0 A28 28 0 0 1 28 0 Z" fill="#f7a6c6"/><path d="M-28 0H28" stroke="#8961bd" stroke-opacity=".25" stroke-width="2"/><circle r="27.5" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2"/><circle cx="-9" cy="-11" r="4" fill="rgba(255,255,255,.65)"/>
+              </g>
+              <g transform="translate(416 259) rotate(13)">
+                <circle r="27" fill="#f4856f"/><path d="M-27 0 A27 27 0 0 1 27 0 Z" fill="#ffd36a"/><path d="M-27 0H27" stroke="#c65b4d" stroke-opacity=".25" stroke-width="2"/><circle r="26.5" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2"/><circle cx="-9" cy="-11" r="4" fill="rgba(255,255,255,.65)"/>
+              </g>
+              <g transform="translate(204 297) rotate(-8)">
+                <circle r="30" fill="#ffd36a"/><path d="M-30 0 A30 30 0 0 1 30 0 Z" fill="#fff0ba"/><path d="M-30 0H30" stroke="#c79a29" stroke-opacity=".25" stroke-width="2"/><circle r="29.5" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2"/><circle cx="-10" cy="-12" r="4" fill="rgba(255,255,255,.7)"/>
+              </g>
+              <g transform="translate(268 286) rotate(17)">
+                <circle r="32" fill="#82cbb0"/><path d="M-32 0 A32 32 0 0 1 32 0 Z" fill="#d8f1e6"/><path d="M-32 0H32" stroke="#559b83" stroke-opacity=".25" stroke-width="2"/><circle r="31.5" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2"/><circle cx="-11" cy="-13" r="4" fill="rgba(255,255,255,.65)"/>
+              </g>
+              <g transform="translate(333 283) rotate(-11)">
+                <circle r="31" fill="#f28db4"/><path d="M-31 0 A31 31 0 0 1 31 0 Z" fill="#ffd9e8"/><path d="M-31 0H31" stroke="#c45f89" stroke-opacity=".25" stroke-width="2"/><circle r="30.5" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2"/><circle cx="-10" cy="-13" r="4" fill="rgba(255,255,255,.7)"/>
+              </g>
+              <g transform="translate(391 313) rotate(21)">
+                <circle r="28" fill="#f2a15e"/><path d="M-28 0 A28 28 0 0 1 28 0 Z" fill="#ffe3ae"/><path d="M-28 0H28" stroke="#c47843" stroke-opacity=".25" stroke-width="2"/><circle r="27.5" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2"/><circle cx="-9" cy="-11" r="4" fill="rgba(255,255,255,.65)"/>
+              </g>
+              <g transform="translate(174 350) rotate(-16)">
+                <circle r="27" fill="#a48be0"/><path d="M-27 0 A27 27 0 0 1 27 0 Z" fill="#f4b1cf"/><path d="M-27 0H27" stroke="#7d63ba" stroke-opacity=".25" stroke-width="2"/><circle r="26.5" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2"/><circle cx="-9" cy="-11" r="4" fill="rgba(255,255,255,.65)"/>
+              </g>
+              <g transform="translate(238 360) rotate(8)">
+                <circle r="30" fill="#6fa6e8"/><path d="M-30 0 A30 30 0 0 1 30 0 Z" fill="#c8e0ff"/><path d="M-30 0H30" stroke="#4e7fbe" stroke-opacity=".25" stroke-width="2"/><circle r="29.5" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2"/><circle cx="-10" cy="-12" r="4" fill="rgba(255,255,255,.7)"/>
+              </g>
+              <g transform="translate(300 347) rotate(-6)">
+                <circle r="32" fill="#f57c91"/><path d="M-32 0 A32 32 0 0 1 32 0 Z" fill="#ffd36a"/><path d="M-32 0H32" stroke="#c95a6b" stroke-opacity=".25" stroke-width="2"/><circle r="31.5" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2"/><circle cx="-11" cy="-13" r="4" fill="rgba(255,255,255,.65)"/>
+              </g>
+              <g transform="translate(362 364) rotate(15)">
+                <circle r="27" fill="#f6c35e"/><path d="M-27 0 A27 27 0 0 1 27 0 Z" fill="#fff0b8"/><path d="M-27 0H27" stroke="#c89b32" stroke-opacity=".25" stroke-width="2"/><circle r="26.5" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2"/><circle cx="-9" cy="-11" r="4" fill="rgba(255,255,255,.65)"/>
+              </g>
+              <g transform="translate(408 354) rotate(-22)">
+                <circle r="24" fill="#8ed1bd"/><path d="M-24 0 A24 24 0 0 1 24 0 Z" fill="#ffe2a0"/><path d="M-24 0H24" stroke="#5da38c" stroke-opacity=".25" stroke-width="2"/><circle r="23.5" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2"/><circle cx="-8" cy="-10" r="3.5" fill="rgba(255,255,255,.65)"/>
+              </g>
+              <g transform="translate(256 403) rotate(12)">
+                <circle r="25" fill="#f4a4c4"/><path d="M-25 0 A25 25 0 0 1 25 0 Z" fill="#ffe6ad"/><path d="M-25 0H25" stroke="#cc7899" stroke-opacity=".25" stroke-width="2"/><circle r="24.5" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2"/><circle cx="-8" cy="-10" r="3.5" fill="rgba(255,255,255,.65)"/>
+              </g>
+              <g transform="translate(330 409) rotate(-14)">
+                <circle r="26" fill="#8daee8"/><path d="M-26 0 A26 26 0 0 1 26 0 Z" fill="#e2d3fb"/><path d="M-26 0H26" stroke="#6683be" stroke-opacity=".25" stroke-width="2"/><circle r="25.5" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2"/><circle cx="-9" cy="-10" r="3.5" fill="rgba(255,255,255,.65)"/>
+              </g>
+            </g>
+
+            <circle cx="300" cy="250" r="171" fill="url(#gGlass)" stroke="none" opacity=".6"/>
+            <path d="M187 158 C200 115 240 94 284 91" fill="none" stroke="#ffffff" stroke-width="10" stroke-linecap="round" opacity=".62"/>
+            <path d="M403 330 C395 352 378 369 356 379" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" opacity=".28"/>
+            <ellipse cx="252" cy="149" rx="52" ry="24" fill="#ffffff" opacity=".14" transform="rotate(-24 252 149)"/>
+
+            <rect x="104" y="400" width="392" height="61" rx="20" fill="url(#gRim)" stroke="#d99b25" stroke-width="2"/>
+            <g stroke="#c78d1f" stroke-width="2" opacity=".45">
+              <path d="M147 413v34"/><path d="M178 413v34"/><path d="M209 413v34"/><path d="M240 413v34"/><path d="M271 413v34"/><path d="M302 413v34"/><path d="M333 413v34"/><path d="M364 413v34"/><path d="M395 413v34"/><path d="M426 413v34"/><path d="M457 413v34"/>
+            </g>
+            <rect x="104" y="400" width="392" height="9" rx="4.5" fill="#fff0b3" opacity=".55"/>
+
+            <rect x="160" y="474" width="280" height="38" rx="12" fill="#fff8ec" stroke="#f5c9da"/>
+            <text x="300" y="498" text-anchor="middle" font-family="'KaiTi','STKaiti',serif" font-size="14" letter-spacing="2.5" fill="#9b5b73">一枚硬币 · 一份惊喜</text>
+
+            <g class="gacha-knob">
+              <circle cx="215" cy="585" r="70" fill="#f8c84a" stroke="#d79b29" stroke-width="2"/>
+              <circle cx="215" cy="585" r="54" fill="#ffd76a" stroke="rgba(255,255,255,.5)" stroke-width="4" stroke-dasharray="2 9"/>
+              <rect x="197" y="533" width="36" height="104" rx="18" fill="url(#gDial)"/>
+              <circle cx="215" cy="585" r="11" fill="#fff8e9"/>
+            </g>
+
+            <rect x="349" y="516" width="98" height="72" rx="12" fill="#fff8ec" stroke="#f5c9da"/>
+            <ellipse cx="398" cy="544" rx="8" ry="15" fill="#27305c"/>
+            <g fill="#27305c" opacity=".24">
+              <circle cx="386" cy="574" r="3"/><circle cx="398" cy="574" r="3"/><circle cx="410" cy="574" r="3"/>
+            </g>
+
+            <rect x="354" y="596" width="112" height="54" rx="14" fill="#27305c"/>
+            <rect x="366" y="591" width="88" height="19" rx="9" fill="#f7a8c3"/>
+
+            <rect x="258" y="52" width="84" height="34" rx="17" fill="url(#gRim)" stroke="#d99b25" stroke-width="2"/>
+            <circle cx="300" cy="43" r="14" fill="#ef6ea6" stroke="#d44f87" stroke-width="2"/>
+            <rect x="284" y="80" width="32" height="14" rx="6" fill="#e7ab29"/>
+          </svg>
+
+          <div class="gacha-capsule-out" id="gachaCapsule" aria-hidden="true"></div>
+
+          <div class="gacha-controls">
+            <div class="gacha-coins" aria-hidden="true"><i></i><i></i><i></i></div>
+            <button class="btn gacha-btn" id="gachaBtn" type="button">
+              <span class="gacha-coin-icon" aria-hidden="true">★</span>
+              <span id="gachaBtnText">投一枚硬币</span>
+            </button>
+            <p class="gacha-latest" id="gachaLatest" aria-live="polite">投一枚硬币，看看今天的手气</p>
+            <p class="gacha-left">今天还剩 <b id="gachaLeft">3</b> 次机会</p>
+          </div>
+        </div>
+
+        <aside class="gacha-panel">
+          <div class="gacha-panel-head">
+            <p class="eyebrow eyebrow--gacha">THREE LITTLE GIFTS</p>
+            <h3>今日礼物</h3>
+            <p>九份礼物里，随机出现三份</p>
+          </div>
+
+          <div class="gacha-tickets" id="gachaTickets" aria-live="polite">
+            <article class="gacha-ticket" data-slot="0">
+              <span class="ticket-no">01</span>
+              <span class="ticket-emoji" aria-hidden="true">✦</span>
+              <p class="ticket-text">等待一枚硬币</p>
+              <span class="ticket-stamp">待扭出</span>
+            </article>
+            <article class="gacha-ticket" data-slot="1">
+              <span class="ticket-no">02</span>
+              <span class="ticket-emoji" aria-hidden="true">✦</span>
+              <p class="ticket-text">等待一枚硬币</p>
+              <span class="ticket-stamp">待扭出</span>
+            </article>
+            <article class="gacha-ticket" data-slot="2">
+              <span class="ticket-no">03</span>
+              <span class="ticket-emoji" aria-hidden="true">✦</span>
+              <p class="ticket-text">等待一枚硬币</p>
+              <span class="ticket-stamp">待扭出</span>
+            </article>
+          </div>
+
+          <button class="btn btn--rose gacha-next" id="gachaNextBtn" type="button" hidden>
+            <span>收好礼物，去读信</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg>
+          </button>
+          <button class="gacha-skip" id="gachaSkipBtn" type="button">先跳过，直接看信</button>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 06 · 终章 ============ -->
   <section class="scene scene--finale" id="sceneFinale" aria-label="生日快乐，写给你的一封信">
     <div class="finale-bg" aria-hidden="true">
       <span class="glow glow--1"></span>

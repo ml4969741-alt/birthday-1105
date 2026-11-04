@@ -26,6 +26,7 @@
     desktop: $('#sceneDesktop'),
     story: $('#sceneStory'),
     cake: $('#sceneCake'),
+    gacha: $('#sceneGacha'),
     finale: $('#sceneFinale')
   };
   const notesLayer = $('#notesLayer');
@@ -227,6 +228,26 @@
       [1318.5, 1567.98, 2093].forEach((freq, i) => tone(freq, .4, .022, 'sine', i * .055));
     }
 
+    function coin() {
+      if (!ctx || muted) return;
+      tone(1320, .18, .035, 'sine');
+      tone(1980, .22, .022, 'sine', .045);
+    }
+
+    function crank() {
+      if (!ctx || muted) return;
+      for (let i = 0; i < 9; i += 1) {
+        tone(280 - i * 12, .04, .012, 'triangle', i * .06);
+      }
+      tone(170, .2, .03, 'sine', .56);
+    }
+
+    function capsule() {
+      if (!ctx || muted) return;
+      tone(196, .14, .05, 'triangle');
+      tone(720, .35, .025, 'sine', .05);
+    }
+
     function puff() {
       if (!ctx || muted) return;
       if (!noiseBuffer) {
@@ -260,7 +281,7 @@
     }
 
     return {
-      start, restart, toggle, pop, sparkle, puff, chord,
+      start, restart, toggle, pop, sparkle, puff, chord, coin, crank, capsule,
       isStarted: () => started,
       isMuted: () => muted
     };
@@ -733,11 +754,9 @@
     blowBtn.disabled = true;
     setBlowLabel('愿望已送达 ♡');
     $('#cakeStage').classList.add('is-wished');
-    Sound.chord();
     window.setTimeout(() => {
-      activate('finale');
-      FX.start();
-      window.setTimeout(() => sceneFinale.classList.add('is-revealed'), 60);
+      activate('gacha');
+      Sound.sparkle();
     }, 850);
   }
 
@@ -794,6 +813,139 @@
       storyBtn.disabled = false;
     }, 240);
   });
+
+  /* =========================================================
+     gacha · three little gifts
+     ========================================================= */
+  const GIFTS = [
+    { text: '撒娇喊老婆', emoji: '🥺', cap: ['#f7a1b8', '#ffd36a'] },
+    { text: '一个爱的亲亲', emoji: '💋', cap: ['#ff8f9f', '#ffc7d1'] },
+    { text: '一个爱的抱抱', emoji: '🤗', cap: ['#f6b36a', '#ffe3a8'] },
+    { text: '一个大蛋糕', emoji: '🍰', cap: ['#ff9f8a', '#ffd36a'] },
+    { text: '帮你吹一次头发', emoji: '💇', cap: ['#9bb7f4', '#d7e6ff'] },
+    { text: '认真听你吐槽不顶嘴', emoji: '👂', cap: ['#b9a3ee', '#e6dcff'] },
+    { text: '满足一个小心愿', emoji: '🌟', cap: ['#ffd36a', '#fff0b5'] },
+    { text: '命令我背你一小段路', emoji: '🐷', cap: ['#f5a6c8', '#ffd9e8'] },
+    { text: '帮你按摩肩颈十分钟', emoji: '💆', cap: ['#8fd2b3', '#d5f1e3'] }
+  ];
+
+  const gachaState = { remaining: [], drawn: [], spinning: false, initialized: false };
+  const gachaStage = $('#gachaStage');
+  const gachaBtn = $('#gachaBtn');
+  const gachaBtnText = $('#gachaBtnText');
+  const gachaLeft = $('#gachaLeft');
+  const gachaLatest = $('#gachaLatest');
+  const gachaCoins = $$('.gacha-coins i');
+  const gachaTickets = $$('.gacha-ticket');
+  const gachaNextBtn = $('#gachaNextBtn');
+  const gachaSkipBtn = $('#gachaSkipBtn');
+  const gachaCapsule = $('#gachaCapsule');
+
+  function initGacha() {
+    gachaState.remaining = GIFTS.map((_, index) => index);
+    gachaState.drawn = [];
+    gachaState.spinning = false;
+    gachaState.initialized = true;
+    gachaStage.classList.remove('is-spinning', 'is-dispensing', 'has-capsule');
+    gachaBtn.disabled = false;
+    gachaBtnText.textContent = '投一枚硬币';
+    gachaLatest.textContent = '投一枚硬币，看看今天的手气';
+    gachaLatest.classList.remove('is-pop');
+    gachaNextBtn.hidden = true;
+    gachaSkipBtn.hidden = false;
+    gachaTickets.forEach((ticket) => {
+      ticket.classList.remove('is-filled', 'is-new');
+      ticket.querySelector('.ticket-emoji').textContent = '✦';
+      ticket.querySelector('.ticket-text').textContent = '等待一枚硬币';
+      ticket.querySelector('.ticket-stamp').textContent = '待扭出';
+    });
+    updateGachaUI();
+  }
+
+  function updateGachaUI() {
+    const used = gachaState.drawn.length;
+    const left = Math.max(0, 3 - used);
+    gachaLeft.textContent = String(left);
+    gachaCoins.forEach((coin, index) => {
+      coin.classList.toggle('is-used', index < used);
+    });
+    if (used >= 3) {
+      gachaBtn.disabled = true;
+      if (!gachaState.spinning) gachaBtnText.textContent = '三次礼物都收好啦';
+      gachaNextBtn.hidden = false;
+      gachaSkipBtn.hidden = true;
+    } else if (!gachaState.spinning) {
+      gachaBtn.disabled = false;
+      gachaBtnText.textContent = used > 0 ? '再投一枚' : '投一枚硬币';
+      gachaNextBtn.hidden = true;
+      gachaSkipBtn.hidden = false;
+    }
+  }
+
+  function drawGacha() {
+    if (gachaState.spinning || gachaState.drawn.length >= 3) return;
+    if (!gachaState.initialized) initGacha();
+    const slot = gachaState.drawn.length;
+    const pick = Math.floor(Math.random() * gachaState.remaining.length);
+    const gift = GIFTS[gachaState.remaining.splice(pick, 1)[0]];
+    gachaState.drawn.push(gift);
+    gachaState.spinning = true;
+
+    gachaStage.classList.remove('has-capsule');
+    gachaStage.classList.add('is-spinning');
+    gachaCapsule.style.setProperty('--cap-a', gift.cap[0]);
+    gachaCapsule.style.setProperty('--cap-b', gift.cap[1]);
+    gachaBtn.disabled = true;
+    gachaBtnText.textContent = '扭动中…';
+    Sound.coin();
+    window.setTimeout(() => Sound.crank(), 120);
+
+    window.setTimeout(() => {
+      gachaStage.classList.remove('is-spinning');
+      gachaStage.classList.add('is-dispensing');
+      Sound.capsule();
+      const ticket = gachaTickets[slot];
+      ticket.querySelector('.ticket-emoji').textContent = gift.emoji;
+      ticket.querySelector('.ticket-text').textContent = gift.text;
+      ticket.querySelector('.ticket-stamp').textContent = '已收下';
+      ticket.classList.add('is-filled');
+      ticket.classList.remove('is-new');
+      void ticket.offsetWidth;
+      ticket.classList.add('is-new');
+      gachaLatest.textContent = `扭到：${gift.text}`;
+      gachaLatest.classList.remove('is-pop');
+      void gachaLatest.offsetWidth;
+      gachaLatest.classList.add('is-pop');
+    }, 950);
+
+    window.setTimeout(() => {
+      gachaStage.classList.remove('is-dispensing');
+      gachaStage.classList.add('has-capsule');
+      gachaState.spinning = false;
+      Sound.sparkle();
+      updateGachaUI();
+    }, 1550);
+  }
+
+  function startFinale() {
+    if (currentScene === 'finale') return;
+    activate('finale');
+    FX.start();
+    Sound.chord();
+    window.setTimeout(() => sceneFinale.classList.add('is-revealed'), 60);
+  }
+
+  gachaBtn.addEventListener('click', drawGacha);
+  gachaNextBtn.addEventListener('click', () => {
+    if (gachaState.drawn.length < 3) return;
+    Sound.pop();
+    startFinale();
+  });
+  gachaSkipBtn.addEventListener('click', () => {
+    Sound.pop();
+    startFinale();
+  });
+  initGacha();
 
   /* =========================================================
      finale · confetti & fireworks
@@ -1032,6 +1184,8 @@
     initNotes(true);
   } else if (preview === 'story') {
     activate('story');
+  } else if (preview === 'gacha') {
+    activate('gacha');
   } else if (preview === 'cake') {
     activate('cake');
   } else if (preview === 'finale') {
