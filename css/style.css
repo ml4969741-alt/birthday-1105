@@ -1483,32 +1483,36 @@ img { max-width: 100%; }
   letter-spacing: .015em;
   color: #57424b;
   text-align: justify;
-  padding-bottom: 26px;
+  padding-bottom: 0;
 }
 .letter-body p { margin: 0 0 .35em; text-indent: 2em; }
 .letter-body p.letter-salute { text-indent: 0; margin-bottom: 1em; }
-.letter-body p.letter-sign { text-indent: 0; margin-top: 1.5em; text-align: right; font-size: 17.5px; letter-spacing: .06em; color: #8a5c68; }
-.letter-body p.letter-date {
-  text-indent: 0;
-  text-align: right;
+.letter-bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 1.6em;
+  padding-top: 1.05em;
+  border-top: 1px dashed rgba(150, 108, 94, .2);
+}
+.letter-signature { text-align: right; }
+.letter-sign {
+  font-family: var(--font-hand);
+  font-size: 17.5px;
+  letter-spacing: .06em;
+  color: #8a5c68;
+}
+.letter-date {
+  margin-top: .25em;
   font-family: var(--font-latin);
   font-size: 10.5px;
   letter-spacing: .16em;
   color: #a8878a;
-  margin-top: .25em;
-}
-.letter-body p.letter-ps {
-  text-indent: 0;
-  margin-top: 1.6em;
-  padding-top: 1em;
-  border-top: 1px dashed rgba(150, 108, 94, .2);
-  font-size: 15.5px;
-  color: #b47180;
 }
 .seal {
-  position: absolute;
-  right: clamp(24px, 4.5vw, 46px);
-  bottom: clamp(34px, 4.4vw, 44px);
+  position: relative;
+  flex: none;
   width: 62px;
   height: 62px;
   display: flex;
@@ -1650,9 +1654,10 @@ img { max-width: 100%; }
   .letter { margin-top: 30px; padding: 30px 22px 34px; }
   .letter-head { font-size: 8px; letter-spacing: .14em; }
   .letter h3 { font-size: 21px; margin-top: 20px; }
-  .letter-body { font-size: 15.5px; line-height: 2; margin-top: 16px; padding-bottom: 34px; }
-  .letter-body p.letter-sign { font-size: 16px; }
-  .seal { width: 54px; height: 54px; right: 20px; bottom: 22px; font-size: 14px; }
+  .letter-body { font-size: 15.5px; line-height: 2; margin-top: 16px; padding-bottom: 0; }
+  .letter-bottom { margin-top: 1.4em; padding-top: 1em; gap: 14px; }
+  .letter-sign { font-size: 16px; }
+  .seal { width: 54px; height: 54px; font-size: 14px; }
   .seal small { font-size: 6.5px; }
   .finale-actions { margin-top: 24px; }
   .finale-foot { margin-top: 24px; font-size: 8px; }
