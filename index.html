@@ -1,0 +1,381 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>11.05 · 生日快乐</title>
+  <meta name="description" content="有一份小小的礼物，想亲手交给你。">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="11.05 · 生日快乐">
+  <meta property="og:description" content="有一份小小的礼物，想亲手交给你。">
+  <meta property="og:locale" content="zh_CN">
+  <meta name="twitter:card" content="summary">
+  <meta name="theme-color" content="#170f1e">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%82%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-scene="intro">
+
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ============ 01 · 开场 ============ -->
+  <section class="scene scene--intro is-active" id="sceneIntro" aria-label="生日礼物开场">
+    <canvas class="star-canvas" id="starCanvas" aria-hidden="true"></canvas>
+    <div class="intro-halo" aria-hidden="true"></div>
+    <div class="intro-bokeh" aria-hidden="true">
+      <i class="bk bk--1"></i><i class="bk bk--2"></i><i class="bk bk--3"></i>
+    </div>
+
+    <header class="corner-meta" aria-hidden="true">
+      <span>FOR MY GIRL</span>
+      <span>EST. 11 · 05</span>
+    </header>
+
+    <div class="intro-inner">
+      <p class="eyebrow eyebrow--intro reveal" style="--d:.1s">A LITTLE SOMETHING FOR YOU</p>
+      <div class="intro-date reveal" style="--d:.2s" aria-label="11月5日">
+        <span>11</span><i>·</i><span>05</span>
+      </div>
+      <h1 class="reveal" style="--d:.32s">给全世界<br class="br-sm">最可爱的你</h1>
+      <p class="intro-sub reveal" style="--d:.45s">有一份小小的礼物，想亲手交给你</p>
+      <button class="btn btn--light reveal" id="enterBtn" type="button" style="--d:.58s">
+        <span>打开礼物</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg>
+      </button>
+      <p class="intro-hint reveal" style="--d:.72s">建议开启声音 · 戴上耳机更甜</p>
+    </div>
+
+    <footer class="intro-foot" aria-hidden="true">TODAY IS YOUR DAY · 2026.11.05</footer>
+  </section>
+
+  <!-- ============ 02 · 弹窗祝福 ============ -->
+  <section class="scene scene--desktop" id="sceneDesktop" aria-label="写给你的生日祝福">
+    <div class="sky" aria-hidden="true">
+      <span class="blob blob--1"></span>
+      <span class="blob blob--2"></span>
+      <span class="blob blob--3"></span>
+      <span class="blob blob--4"></span>
+      <span class="big-script">岁岁欢愉</span>
+      <svg class="hills" viewBox="0 0 1440 420" preserveAspectRatio="none">
+        <path d="M0 305 L175 188 L300 258 L470 120 L625 262 L790 178 L975 290 L1155 152 L1320 250 L1440 202 L1440 420 L0 420Z" fill="#c4a5b5" opacity=".17"/>
+        <path d="M0 352 L215 262 L402 332 L600 232 L820 340 L1040 252 L1240 332 L1440 282 L1440 420 L0 420Z" fill="#a1849f" opacity=".13"/>
+      </svg>
+      <span class="floaty floaty--1">♥</span>
+      <span class="floaty floaty--2">✦</span>
+      <span class="floaty floaty--3">♥</span>
+      <span class="floaty floaty--4">✧</span>
+      <span class="floaty floaty--5">♥</span>
+      <span class="floaty floaty--6">✦</span>
+    </div>
+
+    <header class="desk-bar">
+      <div class="desk-brand">
+        <span class="desk-mark">11.05</span>
+        <span class="desk-divider" aria-hidden="true"></span>
+        <span class="desk-text">生日特别频道</span>
+      </div>
+      <div class="desk-tools">
+        <button class="music-btn" type="button" data-music aria-label="关闭音乐" aria-pressed="true">
+          <span class="music-wave" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <span class="music-text">音乐</span>
+        </button>
+        <span class="desk-clock" id="clock">00:00</span>
+      </div>
+    </header>
+
+    <div class="notes-layer" id="notesLayer" aria-label="会弹出的小小提醒"></div>
+
+    <article class="hero-window" id="heroWindow" aria-labelledby="heroTitle">
+      <div class="win-titlebar">
+        <span class="win-app"><i class="win-app-icon" aria-hidden="true">🎂</i>温馨提示</span>
+        <span class="win-controls">
+          <span class="win-btn" aria-hidden="true"><svg viewBox="0 0 10 10"><path d="M2 5h6"/></svg></span>
+          <span class="win-btn" aria-hidden="true"><svg viewBox="0 0 10 10"><rect x="2" y="2" width="6" height="6" rx=".8"/></svg></span>
+          <button class="win-btn win-btn--close" id="heroClose" type="button" aria-label="关闭这扇窗">
+            <svg viewBox="0 0 10 10"><path d="M2 2l6 6M8 2 2 8"/></svg>
+          </button>
+        </span>
+      </div>
+
+      <div class="hero-body">
+        <p class="hero-kicker">HAPPY BIRTHDAY <span>·</span> NOV 05</p>
+        <h2 class="hero-title" id="heroTitle">生日快乐<br><em>我的女孩<svg class="hand-underline" viewBox="0 0 120 9" preserveAspectRatio="none" aria-hidden="true"><path d="M2 6 C28 2 78 1 118 4"/></svg></em></h2>
+        <div class="hero-rule" aria-hidden="true"><span></span>♡<span></span></div>
+        <p class="hero-desc">十一月五日，世界多了一个你。<br>从那以后，每个普通的日子都有了期待。</p>
+        <button class="btn btn--rose" id="wishBtn" type="button">
+          <span>许一个愿望</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg>
+        </button>
+        <p class="hero-hint">小窗可以拖动，也可以轻轻关掉</p>
+      </div>
+    </article>
+
+    <div class="counter-pill" id="counterPill">
+      <span class="counter-icon" aria-hidden="true">💌</span>
+      <span id="counterText" aria-live="polite">已收下 0 / 12 句悄悄话</span>
+    </div>
+  </section>
+
+  <!-- ============ 03 · 许愿 ============ -->
+  <section class="scene scene--cake" id="sceneCake" aria-label="许一个生日愿望">
+    <div class="cake-bg" aria-hidden="true">
+      <span class="blob blob--c1"></span>
+      <span class="blob blob--c2"></span>
+      <span class="star-dust star-dust--1"></span>
+      <span class="star-dust star-dust--2"></span>
+      <span class="star-dust star-dust--3"></span>
+      <span class="star-dust star-dust--4"></span>
+      <span class="star-dust star-dust--5"></span>
+      <span class="star-dust star-dust--6"></span>
+    </div>
+
+    <header class="cake-top">
+      <span class="cake-date">11 <i>·</i> 05</span>
+      <button class="music-btn music-btn--round" type="button" data-music aria-label="关闭音乐" aria-pressed="true">
+        <span class="music-wave" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span class="music-text">音乐</span>
+      </button>
+    </header>
+
+    <div class="cake-wrap">
+      <p class="eyebrow eyebrow--gold">MAKE A WISH</p>
+      <h2 class="cake-title">闭上眼睛，许个愿吧</h2>
+      <p class="cake-sub">听说生日的愿望，说出来就不灵了</p>
+
+      <div class="cake-stage" id="cakeStage">
+        <svg class="cake" viewBox="0 0 520 500" role="img" aria-label="一只插着三根蜡烛的生日蛋糕">
+          <defs>
+            <radialGradient id="cGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0" stop-color="#ffd9b8" stop-opacity=".6"/>
+              <stop offset=".55" stop-color="#f5a6b5" stop-opacity=".16"/>
+              <stop offset="1" stop-color="#f5a6b5" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="cPlate" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#fffdf8"/>
+              <stop offset="1" stop-color="#ecd4c6"/>
+            </linearGradient>
+            <linearGradient id="cTier1" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#e5a1ae"/>
+              <stop offset=".16" stop-color="#f6c4cc"/>
+              <stop offset=".52" stop-color="#fbd9dd"/>
+              <stop offset=".86" stop-color="#f1b7c2"/>
+              <stop offset="1" stop-color="#db93a3"/>
+            </linearGradient>
+            <linearGradient id="cTier2" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#efc19e"/>
+              <stop offset=".2" stop-color="#fadfc5"/>
+              <stop offset=".55" stop-color="#fff0dd"/>
+              <stop offset=".86" stop-color="#f6d3b3"/>
+              <stop offset="1" stop-color="#e4b089"/>
+            </linearGradient>
+            <linearGradient id="cCandleA" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#e9a2b2"/>
+              <stop offset=".5" stop-color="#ffd6df"/>
+              <stop offset="1" stop-color="#efb3c0"/>
+            </linearGradient>
+            <linearGradient id="cCandleB" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#a9cdb9"/>
+              <stop offset=".5" stop-color="#e2f4e8"/>
+              <stop offset="1" stop-color="#b9d9c7"/>
+            </linearGradient>
+            <linearGradient id="cCandleC" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#dfc07a"/>
+              <stop offset=".5" stop-color="#fff2c9"/>
+              <stop offset="1" stop-color="#e9cf95"/>
+            </linearGradient>
+            <radialGradient id="cBerry" cx="38%" cy="28%" r="75%">
+              <stop offset="0" stop-color="#ff8d8d"/>
+              <stop offset=".55" stop-color="#e85262"/>
+              <stop offset="1" stop-color="#bd3349"/>
+            </radialGradient>
+            <linearGradient id="cFlame" x1="0" y1="1" x2="0" y2="0">
+              <stop offset="0" stop-color="#f3733f"/>
+              <stop offset=".45" stop-color="#ffb45e"/>
+              <stop offset="1" stop-color="#fff4c4"/>
+            </linearGradient>
+            <radialGradient id="cFlameGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0" stop-color="#ffdf9e" stop-opacity=".85"/>
+              <stop offset=".5" stop-color="#ffb96e" stop-opacity=".28"/>
+              <stop offset="1" stop-color="#ffb96e" stop-opacity="0"/>
+            </radialGradient>
+            <pattern id="cDrip1" width="34" height="34" patternUnits="userSpaceOnUse">
+              <rect width="34" height="17" fill="#fffaf0"/>
+              <circle cx="17" cy="17" r="12" fill="#fffaf0"/>
+            </pattern>
+            <pattern id="cDrip2" width="30" height="30" patternUnits="userSpaceOnUse">
+              <rect width="30" height="15" fill="#fffaf1"/>
+              <circle cx="15" cy="15" r="10" fill="#fffaf1"/>
+            </pattern>
+            <filter id="cSoft" x="-40%" y="-40%" width="180%" height="180%">
+              <feGaussianBlur stdDeviation="9"/>
+            </filter>
+          </defs>
+
+          <ellipse cx="260" cy="250" rx="248" ry="240" fill="url(#cGlow)"/>
+          <ellipse cx="260" cy="460" rx="188" ry="22" fill="#2a1220" opacity=".35" filter="url(#cSoft)"/>
+          <ellipse cx="260" cy="447" rx="197" ry="29" fill="url(#cPlate)"/>
+          <ellipse cx="260" cy="441" rx="178" ry="19" fill="#fff9f0"/>
+
+          <!-- 下层蛋糕 -->
+          <rect x="105" y="318" width="310" height="116" rx="15" fill="url(#cTier1)"/>
+          <rect x="105" y="318" width="310" height="116" rx="15" fill="none" stroke="#c47f8f" stroke-opacity=".28"/>
+          <rect x="100" y="312" width="320" height="46" fill="url(#cDrip1)"/>
+          <text x="260" y="395" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="12" letter-spacing="4.6" fill="#a85e70" opacity=".8">HAPPY BIRTHDAY</text>
+
+          <!-- 上层蛋糕 -->
+          <rect x="145" y="216" width="230" height="104" rx="14" fill="url(#cTier2)"/>
+          <rect x="145" y="216" width="230" height="104" rx="14" fill="none" stroke="#d3a27f" stroke-opacity=".3"/>
+          <rect x="140" y="210" width="240" height="40" fill="url(#cDrip2)"/>
+          <ellipse cx="260" cy="216" rx="114" ry="15" fill="#fffaf0"/>
+
+          <!-- 糖珠 -->
+          <g opacity=".9">
+            <rect x="186" y="294" width="8" height="3" rx="1.5" fill="#e58ca0" transform="rotate(-18 186 294)"/>
+            <rect x="224" y="304" width="8" height="3" rx="1.5" fill="#9fcbb6" transform="rotate(12 224 304)"/>
+            <rect x="284" y="297" width="8" height="3" rx="1.5" fill="#e8be6f" transform="rotate(-8 284 297)"/>
+            <rect x="326" y="306" width="8" height="3" rx="1.5" fill="#b9a7e8" transform="rotate(22 326 306)"/>
+            <rect x="158" y="352" width="9" height="3" rx="1.5" fill="#fff3d8" transform="rotate(-22 158 352)"/>
+            <rect x="332" y="374" width="9" height="3" rx="1.5" fill="#fff3d8" transform="rotate(16 332 374)"/>
+            <rect x="206" y="382" width="7" height="3" rx="1.5" fill="#b9a7e8" transform="rotate(-12 206 382)"/>
+            <circle cx="248" cy="372" r="2.4" fill="#ffe5a9"/>
+            <circle cx="286" cy="384" r="2" fill="#f2a3b2"/>
+          </g>
+
+          <!-- 草莓 -->
+          <g transform="translate(181 190)">
+            <path d="M0 3 C-10 11 -11 24 0 33 C11 24 10 11 0 3Z" fill="url(#cBerry)"/>
+            <path d="M-8 5 L0 -2 L8 5 C4 8 -4 8 -8 5Z" fill="#7fa87d"/>
+            <circle cx="-3" cy="13" r="1" fill="#ffe9c9"/>
+            <circle cx="4" cy="18" r="1" fill="#ffe9c9"/>
+            <circle cx="-4" cy="23" r="1" fill="#ffe9c9"/>
+            <circle cx="2" cy="27" r=".9" fill="#ffe9c9"/>
+          </g>
+          <g transform="translate(342 196) scale(.86)">
+            <path d="M0 3 C-10 11 -11 24 0 33 C11 24 10 11 0 3Z" fill="url(#cBerry)"/>
+            <path d="M-8 5 L0 -2 L8 5 C4 8 -4 8 -8 5Z" fill="#7fa87d"/>
+            <circle cx="-3" cy="13" r="1" fill="#ffe9c9"/>
+            <circle cx="4" cy="18" r="1" fill="#ffe9c9"/>
+            <circle cx="-3" cy="24" r="1" fill="#ffe9c9"/>
+          </g>
+
+          <!-- 蜡烛 -->
+          <g class="candle" data-candle="0" tabindex="0" role="button" aria-label="吹灭第一支蜡烛">
+            <ellipse cx="200" cy="215" rx="12" ry="4" fill="#c58b76" opacity=".3"/>
+            <rect x="191" y="136" width="18" height="80" rx="8" fill="url(#cCandleA)"/>
+            <path d="M193 154 l15 -7 M192 176 l16 -8 M192 198 l16 -8" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".55"/>
+            <line x1="200" y1="136" x2="200" y2="127" stroke="#6b4a3d" stroke-width="2" stroke-linecap="round"/>
+            <ellipse class="flame-glow" cx="200" cy="112" rx="24" ry="27" fill="url(#cFlameGlow)"/>
+            <path class="flame" d="M200 96 C208 106 208 119 200 123 C192 119 192 106 200 96Z" fill="url(#cFlame)"/>
+            <path class="flame-core" d="M200 107 C204 112 204 118 200 120 C196 118 196 112 200 107Z" fill="#fff8d6"/>
+            <g class="smoke">
+              <path d="M200 122 c-7 -12 6 -18 0 -30 c-6 -12 7 -18 0 -28" fill="none" stroke="#eadad3" stroke-width="3" stroke-linecap="round"/>
+            </g>
+          </g>
+
+          <g class="candle" data-candle="1" tabindex="0" role="button" aria-label="吹灭第二支蜡烛">
+            <ellipse cx="260" cy="215" rx="12" ry="4" fill="#c58b76" opacity=".3"/>
+            <rect x="251" y="136" width="18" height="80" rx="8" fill="url(#cCandleB)"/>
+            <path d="M253 154 l15 -7 M252 176 l16 -8 M252 198 l16 -8" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".55"/>
+            <line x1="260" y1="136" x2="260" y2="127" stroke="#6b4a3d" stroke-width="2" stroke-linecap="round"/>
+            <ellipse class="flame-glow" cx="260" cy="112" rx="24" ry="27" fill="url(#cFlameGlow)"/>
+            <path class="flame" d="M260 96 C268 106 268 119 260 123 C252 119 252 106 260 96Z" fill="url(#cFlame)"/>
+            <path class="flame-core" d="M260 107 C264 112 264 118 260 120 C256 118 256 112 260 107Z" fill="#fff8d6"/>
+            <g class="smoke">
+              <path d="M260 122 c-7 -12 6 -18 0 -30 c-6 -12 7 -18 0 -28" fill="none" stroke="#eadad3" stroke-width="3" stroke-linecap="round"/>
+            </g>
+          </g>
+
+          <g class="candle" data-candle="2" tabindex="0" role="button" aria-label="吹灭第三支蜡烛">
+            <ellipse cx="320" cy="215" rx="12" ry="4" fill="#c58b76" opacity=".3"/>
+            <rect x="311" y="136" width="18" height="80" rx="8" fill="url(#cCandleC)"/>
+            <path d="M313 154 l15 -7 M312 176 l16 -8 M312 198 l16 -8" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".55"/>
+            <line x1="320" y1="136" x2="320" y2="127" stroke="#6b4a3d" stroke-width="2" stroke-linecap="round"/>
+            <ellipse class="flame-glow" cx="320" cy="112" rx="24" ry="27" fill="url(#cFlameGlow)"/>
+            <path class="flame" d="M320 96 C328 106 328 119 320 123 C312 119 312 106 320 96Z" fill="url(#cFlame)"/>
+            <path class="flame-core" d="M320 107 C324 112 324 118 320 120 C316 118 316 112 320 107Z" fill="#fff8d6"/>
+            <g class="smoke">
+              <path d="M320 122 c-7 -12 6 -18 0 -30 c-6 -12 7 -18 0 -28" fill="none" stroke="#eadad3" stroke-width="3" stroke-linecap="round"/>
+            </g>
+          </g>
+
+          <!-- 盘子上的小甜点 -->
+          <g opacity=".9">
+            <ellipse cx="112" cy="432" rx="22" ry="9" fill="#fff6e8"/>
+            <rect x="94" y="421" width="36" height="11" rx="5.5" fill="#f3bfc8"/>
+            <rect x="98" y="416" width="28" height="9" rx="4.5" fill="#fff3dc"/>
+            <ellipse cx="408" cy="432" rx="22" ry="9" fill="#fff6e8"/>
+            <rect x="390" y="421" width="36" height="11" rx="5.5" fill="#d9c6ef"/>
+            <rect x="394" y="416" width="28" height="9" rx="4.5" fill="#fff3dc"/>
+          </g>
+        </svg>
+      </div>
+
+      <div class="cake-actions">
+        <button class="btn btn--gold" id="blowBtn" type="button">
+          <span>呼——吹灭蜡烛</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c3 4 5 6.3 5 9a5 5 0 0 1-10 0c0-2.7 2-5 5-9Z"/></svg>
+        </button>
+        <p class="hint">也可以直接点蜡烛的火苗</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 04 · 终章 ============ -->
+  <section class="scene scene--finale" id="sceneFinale" aria-label="生日快乐，写给你的一封信">
+    <div class="finale-bg" aria-hidden="true">
+      <span class="glow glow--1"></span>
+      <span class="glow glow--2"></span>
+      <span class="glow glow--3"></span>
+    </div>
+    <canvas class="fx-canvas" id="fxCanvas" aria-hidden="true"></canvas>
+    <div class="finale-flash" aria-hidden="true"></div>
+
+    <div class="finale-scroll">
+      <header class="finale-head">
+        <p class="eyebrow eyebrow--gold">HAPPY BIRTHDAY · 2026.11.05</p>
+        <h2 class="finale-title">生日快乐</h2>
+        <p class="finale-sub">愿你岁岁平安，年年有我</p>
+      </header>
+
+      <article class="letter" id="letter">
+        <div class="letter-head">
+          <span>TO. <b data-to>宝贝</b></span>
+          <span>FROM. <b data-from-name>我</b></span>
+        </div>
+        <h3>写给你的一封信</h3>
+        <div class="letter-body">
+          <p class="letter-salute">亲爱的<span data-to>宝贝</span>：</p>
+          <p>见字如面。</p>
+          <p>今天是十一月五日，是你的生日，也是我一年里最喜欢的一天。想把所有好听的话都讲给你听，最后发现，最想说的其实是：谢谢你来到这个世界，也谢谢你愿意走进我的生活。</p>
+          <p>你出现以后，日子好像被悄悄加了一层糖。普通的晚风、路边的花、随手拍下的云，都想第一时间分享给你。你开心的时候，我跟着开心；你不开心的时候，我就想做那个一直站在你身边的人。</p>
+          <p>新的一岁，愿你依然会为一杯奶茶雀跃，为一场好天气心动；愿你想去的地方都有人陪，想做的事都能做成；愿你被生活温柔以待，也永远有底气做自己。</p>
+          <p>如果这些愿望里需要我，我一直都在。</p>
+          <p>生日快乐，我的女孩。要一直一直，平安、健康、快乐。</p>
+          <p class="letter-sign">爱你的 <span data-from-name>我</span></p>
+          <p class="letter-date">2026.11.05</p>
+          <p class="letter-ps">P.S. 今天的你，比蛋糕还甜。</p>
+        </div>
+        <div class="seal" aria-hidden="true">11<small>05</small></div>
+      </article>
+
+      <div class="finale-actions">
+        <button class="btn btn--ghost" id="replayMusic" type="button">再听一遍音乐</button>
+        <button class="btn btn--ghost" id="replayAll" type="button">重新开始</button>
+      </div>
+
+      <footer class="finale-foot">MADE WITH ♥ FOR YOU · 2026</footer>
+    </div>
+  </section>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <noscript>
+    <div style="position:fixed;inset:0;display:grid;place-items:center;background:#1a1224;color:#fff4e4;font-family:sans-serif;z-index:9999;padding:24px;text-align:center;">
+      这份小礼物需要 JavaScript 才能打开哦。
+    </div>
+  </noscript>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
+
