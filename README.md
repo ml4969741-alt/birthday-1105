@@ -1,8 +1,19 @@
-﻿# 11.05 · 生日快乐
+# 11.05 · 生日快乐
 
 一个为女朋友准备的生日惊喜网页。灵感来自「弹窗式朋友圈祝福」：满屏粉色、奶油色的小提示窗，每一扇都藏着一句悄悄话。关掉它们之后，还可以许愿、吹蜡烛，最后拆开一封信。
 
 **纯静态页面，无任何外部依赖，双击 `index.html` 就能打开。**
+
+## 在线地址
+
+- 网站：**https://ml4969741-alt.github.io/birthday-1105/**
+- 仓库：**https://github.com/ml4969741-alt/birthday-1105**
+
+线上链接同样支持加名字参数，例如：
+
+```
+https://ml4969741-alt.github.io/birthday-1105/?to=小满&from=阿泽
+```
 
 ---
 
@@ -89,11 +100,24 @@ index.html?to=小满&from=阿泽
 
 ## 发布
 
-这是纯静态站点，直接把整个文件夹拖到以下任一平台即可：
+已通过 **GitHub Pages** 部署，推送到 `main` 分支后会自动重新构建：
+
+- 网站：https://ml4969741-alt.github.io/birthday-1105/
+- 仓库：https://github.com/ml4969741-alt/birthday-1105
+- Pages 设置：Settings → Pages → Source 选择 `main` 分支根目录
+
+更新代码：
+
+```bash
+git add -A
+git commit -m "Update birthday site"
+git push
+```
+
+也可以直接把整个文件夹拖到以下任一平台：
 
 - **Netlify Drop**：https://app.netlify.com/drop
 - **Vercel**：导入文件夹，Framework 选 Other
-- **GitHub Pages**：推到仓库，Settings → Pages 选择分支根目录
 - **自己的服务器**：把文件放进任意静态目录
 
 不需要安装依赖，也不需要构建。
