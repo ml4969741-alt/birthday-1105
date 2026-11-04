@@ -1,4 +1,4 @@
-﻿/* =========================================================
+/* =========================================================
    11.05 · 生日快乐
    vanilla JS · no dependencies · works offline
    ========================================================= */
@@ -24,6 +24,7 @@
   const sceneEls = {
     intro: $('#sceneIntro'),
     desktop: $('#sceneDesktop'),
+    story: $('#sceneStory'),
     cake: $('#sceneCake'),
     finale: $('#sceneFinale')
   };
@@ -33,6 +34,7 @@
   const toastEl = $('#toast');
   const heroWindow = $('#heroWindow');
   const wishBtn = $('#wishBtn');
+  const storyBtn = $('#storyWishBtn');
   const blowBtn = $('#blowBtn');
   const clockEl = $('#clock');
   const sceneFinale = sceneEls.finale;
@@ -778,8 +780,18 @@
     wishBtn.disabled = true;
     Sound.pop();
     window.setTimeout(() => {
-      activate('cake');
+      activate('story');
       wishBtn.disabled = false;
+    }, 240);
+  });
+
+  storyBtn.addEventListener('click', () => {
+    if (storyBtn.disabled) return;
+    storyBtn.disabled = true;
+    Sound.pop();
+    window.setTimeout(() => {
+      activate('cake');
+      storyBtn.disabled = false;
     }, 240);
   });
 
@@ -1018,6 +1030,8 @@
     activate('desktop');
     startClock();
     initNotes(true);
+  } else if (preview === 'story') {
+    activate('story');
   } else if (preview === 'cake') {
     activate('cake');
   } else if (preview === 'finale') {
