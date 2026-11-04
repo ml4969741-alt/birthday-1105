@@ -14,8 +14,8 @@
   const params = new URLSearchParams(window.location.search);
 
   /* ---------- personalisation (?to=名字&from=名字) ---------- */
-  const HER_NAME = (params.get('to') || '宝贝').trim().slice(0, 16) || '宝贝';
-  const FROM_NAME = (params.get('from') || '我').trim().slice(0, 16) || '我';
+  const HER_NAME = (params.get('to') || '王蕊').trim().slice(0, 16) || '王蕊';
+  const FROM_NAME = (params.get('from') || '李行政').trim().slice(0, 16) || '李行政';
   $$('[data-to]').forEach((el) => { el.textContent = HER_NAME; });
   $$('[data-from-name]').forEach((el) => { el.textContent = FROM_NAME; });
   document.title = `11.05 · 生日快乐，${HER_NAME}`;
